@@ -51,12 +51,27 @@ public class Jdbc_2407_live {
         rs.close();
     }
 
+    private static void testAllActorRows(Connection connection, String nameStart) throws SQLException {
+        Statement statement = connection.createStatement();
+        String sql = "SELECT * FROM actor WHERE first_name LIKE '" + nameStart +"%'  ";
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+            String firstName = rs.getString("first_name");
+            String lastName = rs.getString("last_name");
+            System.out.printf("%10s %s\n", firstName, lastName);
+        }
+        rs.close();
+    }
+    
     public static void main(String[] args) throws Exception {
         System.out.println("Application started");
         driverLoad();
-        Connection connection = connectToMySql("deletedemo");
+        Connection connection = connectToMySql("sakila");
         testMetadata(connection);
         testAllTableColumns(connection, "language");
+        testAllActorRows(connection, "ja");
+        connection.close();
+        System.out.println("Application finished");
     }
 
 }
