@@ -11,4 +11,15 @@
         <maven.compiler.target>21</maven.compiler.target>
         <exec.mainClass>gr.codehub.jdbc.Jdbc_2407_live</exec.mainClass>
     </properties>
+    <dependencies>
+        
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.31</version>
+        </dependency>        
+        
+        
+        
+    </dependencies>
 </project>
